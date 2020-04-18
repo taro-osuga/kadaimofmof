@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>物件一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%=house.name %></td>
+        <td><%=house.price %></td>
+        <td><%=house.address %></td>
+        <td><%=house.age %></td>
+        <td><%=house.note %></td>
+        <td><%= link_to '詳細', house %></td>
+        <td><%= link_to '編集', edit_house_path(house) %></td>
+        <td><%= link_to '削除', house, method: :delete, data: { confirm: '削除していいですか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規登録', new_house_path %>
