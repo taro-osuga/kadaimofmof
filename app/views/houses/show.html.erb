@@ -1,0 +1,48 @@
+<h1>閲覧</h1>
+<td><%= link_to '登録物件一覧へ', houses_path %></td>
+<p id="notice"><%= notice %></p>
+<table>
+    <tr>
+    <td> 物件名 </td>
+    <td><%= @house.name %></td>
+    </tr>
+    <tr>
+    <td> 賃料 </td>
+    <td><%= @house.price %>円</td>
+    </tr>
+    <tr>
+    <td> 住所 </td>
+    <td><%= @house.address %></td>
+    </tr>
+    <tr>
+    <td> 築年数 </td>
+    <td><%= @house.age %>年</td>
+    </tr>
+    <tr>
+    <td> 備考 </td>
+    <td><%= @house.note %></td>
+    </tr>
+</table>
+<hr>
+<table>
+    <% @house.stations.each_with_index do |station, index| %>
+    <th>最寄り駅<%= index + 1 %></th>
+    <% @stations.each do |station| %>
+    <tr>
+    <td> 路線名 </td>
+    <td><%= station.root %></td>
+    </tr>
+    <tr>
+    <td> 駅名 </td>
+    <td><%= station.st_name %></td>
+    </tr>
+    <tr>
+    <td> 徒歩分数 </td>
+    <td><%= station.time %></td>
+    </tr>
+    <% end %>
+    <% end %>   
+</table>
+
+<%= link_to '編集', edit_house_path(@house) %> |
+<%= link_to '戻る', houses_path %>
